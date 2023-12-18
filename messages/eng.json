@@ -1,0 +1,21 @@
+{
+  "Index": {
+    "title": "Hello world!"
+  },
+  "Navigation": {
+    "profile": "Profile",
+    "signout": "Sign Out",
+    "signin": "Sign In",
+    "about": "About",
+    "main": "Main",
+    "statistic": "Statistic"
+  },
+  "Statistic": {
+    "page": "Statistic page"
+  },
+  "Signin": {
+    "googlebutton": "Увійти за допомогою Google",
+    "signin": "Увійти",
+    "or": "чи"
+  }
+}

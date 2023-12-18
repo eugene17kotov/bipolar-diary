@@ -1,0 +1,21 @@
+{
+  "Index": {
+    "title": "Привет мир!"
+  },
+  "Navigation": {
+    "profile": "Профиль",
+    "signout": "Выйти",
+    "signin": "Войти",
+    "about": "Про нас",
+    "main": "Главная",
+    "statistic": "Статистика"
+  },
+  "Statistic": {
+    "page": "Страница статистики"
+  },
+  "Signin": {
+    "googlebutton": "Увійти за допомогою Google",
+    "signin": "Увійти",
+    "or": "чи"
+  }
+}

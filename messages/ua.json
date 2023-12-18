@@ -1,0 +1,24 @@
+{
+  "Index": {
+    "title": "Привіт світ!",
+    "googlebutton": "Увійти за допомогою Google",
+    "signin": "Увійти",
+    "or": "чи"
+  },
+  "Navigation": {
+    "profile": "Профіль",
+    "signout": "Вийти",
+    "signin": "Увійти",
+    "about": "Про нас",
+    "main": "Головна",
+    "statistic": "Статистика"
+  },
+  "Statistic": {
+    "page": "Сторінка статистики"
+  },
+  "SignPage": {
+    "googlebutton": "Увійти за допомогою Google",
+    "signin": "Увійти",
+    "or": "чи"
+  }
+}
