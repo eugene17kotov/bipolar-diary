@@ -15,6 +15,7 @@ import { useLocale } from 'next-intl';
 import { useFilledDays } from '@/store/index.js';
 
 import { calendarLocales } from '@/components/Navigation';
+import { Grid } from '@mui/material';
 
 type LocaleKey = keyof typeof calendarLocales;
 
@@ -28,32 +29,36 @@ export default function Example() {
   const locale = useLocale();
 
   return (
-    <div className="pt-16">
-      <Stack className="pt-16" spacing={3}>
-        <LocalizationProvider
-          dateAdapter={AdapterDateFns}
-          adapterLocale={calendarLocales[locale as LocaleKey]}
-        >
-          <DateCalendar
-            defaultValue={new Date()}
-            onChange={(value: Date | null) => handleDateSelect(value)}
-            showDaysOutsideCurrentMonth
-            views={['year', 'month', 'day']}
-            // loading={isLoading}
-            renderLoading={() => <DayCalendarSkeleton />}
-            // slots={{
-            //   day: 'today',
-            // }}
-            // slotProps={{
-            //   day: {
-            //     highlightedDays,
-            //   } as any,
-            // }}
-          />
-        </LocalizationProvider>
-      </Stack>
+    <>
+      <Grid container spacing={2}>
+        <Grid item xs={6}>
+          <LocalizationProvider
+            dateAdapter={AdapterDateFns}
+            adapterLocale={calendarLocales[locale as LocaleKey]}
+          >
+            <DateCalendar
+              defaultValue={new Date()}
+              onChange={(value: Date | null) => handleDateSelect(value)}
+              showDaysOutsideCurrentMonth
+              views={['year', 'month', 'day']}
+              // loading={isLoading}
+              renderLoading={() => <DayCalendarSkeleton />}
+              // slots={{
+              //   day: 'today',
+              // }}
+              // slotProps={{
+              //   day: {
+              //     highlightedDays,
+              //   } as any,
+              // }}
+            />
+          </LocalizationProvider>
+        </Grid>
 
-      <Form selectedDate={selectedDate} />
-    </div>
+        <Grid item xs={6}>
+          <Form selectedDate={selectedDate} />
+        </Grid>
+      </Grid>
+    </>
   );
 }

@@ -1,5 +1,22 @@
-import { TextField, InputLabel, Button, Select, MenuItem } from '@mui/material';
+import {
+  TextField,
+  InputLabel,
+  Select,
+  MenuItem,
+  Typography,
+  Container,
+  Fab,
+  InputAdornment,
+  Card,
+  CardContent,
+  CardActions,
+} from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
+import EditIcon from '@mui/icons-material/Edit';
+import { Done, Clear } from '@mui/icons-material';
 // import { SelectChangeEvent } from '@mui/material/Select';
+
+// import { Button } from '@mui/material-next/';
 
 import { format } from 'date-fns';
 import { useState, useEffect } from 'react';
@@ -67,82 +84,127 @@ const Form: React.FC<FormProps> = ({ selectedDate }) => {
   };
 
   return (
-    <div>
-      <h1>
-        {selectedDate
-          ? format(selectedDate, 'dd-MMM-yyyy')
-          : format(new Date(), 'dd-MMM-yyyy')}
-      </h1>
+    <>
+      <Card sx={{ maxWidth: 300, minHeight: 275 }}>
+        <Typography variant="h4" component="h3">
+          {selectedDate
+            ? format(selectedDate, 'dd-MMM-yyyy')
+            : format(new Date(), 'dd-MMM-yyyy')}
+        </Typography>
 
-      {editOn ? (
-        <>
-          <TextField
-            name="description"
-            label="Description"
-            value={formData?.description}
-            onChange={handleInputChange}
-          />
-          <InputLabel id="hour-label">Sleep during</InputLabel>
-          <Select
-            name="hour"
-            value={formData?.hour}
-            onChange={handleInputChange}
-            labelId="hour-label"
-          >
-            {hours.map(hour => (
-              <MenuItem key={hour} value={hour}>
-                {hour}
-              </MenuItem>
-            ))}
-          </Select>
+        {editOn ? (
+          <>
+            <CardContent>
+              <TextField
+                name="description"
+                label="Description"
+                multiline
+                rows={4}
+                placeholder="Text something"
+                value={formData?.description}
+                onChange={handleInputChange}
+              />
 
-          <InputLabel id="color-label">Feeling</InputLabel>
+              <InputLabel id="hour-label">Sleep during</InputLabel>
+              <Select
+                name="hour"
+                // endAdornment={
+                //   <InputAdornment position="end">hours</InputAdornment>
+                // }
+                value={formData?.hour}
+                onChange={handleInputChange}
+                labelId="hour-label"
+              >
+                {hours.map(hour => (
+                  <MenuItem key={hour} value={hour}>
+                    {hour}
+                  </MenuItem>
+                ))}
+              </Select>
 
-          <Select
-            name="color"
-            value={formData?.color}
-            onChange={handleInputChange}
-            labelId="color-label"
-          >
-            {colors.map(color => (
-              <MenuItem key={color} value={color}>
-                {color}
-              </MenuItem>
-            ))}
-          </Select>
-          <Button
-            type="submit"
-            onClick={() => setEditOn(false)}
-            variant="contained"
-            color="primary"
-          >
-            Cancel
-          </Button>
-          <Button
-            type="submit"
-            onClick={handleSaveButtonClick}
-            variant="contained"
-            color="primary"
-          >
-            Save
-          </Button>
-        </>
-      ) : (
-        <>
-          <p>{formData?.description}</p>
-          <p>{formData?.color}</p>
-          <p>{formData?.hour}</p>
-          <Button
-            type="submit"
-            onClick={() => setEditOn(true)}
-            variant="contained"
-            color="primary"
-          >
-            Edit
-          </Button>
-        </>
-      )}
-    </div>
+              <InputLabel id="color-label">Feeling</InputLabel>
+              <Select
+                name="color"
+                value={formData?.color}
+                onChange={handleInputChange}
+                labelId="color-label"
+              >
+                {colors.map(color => (
+                  <MenuItem key={color} value={color}>
+                    {color}
+                  </MenuItem>
+                ))}
+              </Select>
+            </CardContent>
+            {/* <Button
+              type="submit"
+              onClick={() => setEditOn(false)}
+              variant="contained"
+              color="primary"
+            >
+              Cancel
+            </Button> */}
+            {/* <Button
+              type="submit"
+              onClick={handleSaveButtonClick}
+              variant="contained"
+              color="primary"
+            >
+              Save
+            </Button> */}
+            <CardActions>
+              <Fab
+                type="submit"
+                onClick={() => setEditOn(false)}
+                variant="contained"
+                color="primary"
+                aria-label="cancel"
+              >
+                <Clear />
+              </Fab>
+              <Fab
+                type="submit"
+                onClick={handleSaveButtonClick}
+                color="primary"
+                aria-label="add"
+              >
+                <Done />
+              </Fab>
+            </CardActions>
+          </>
+        ) : (
+          <>
+            <CardContent>
+              <Typography variant="h4" component="p">
+                {formData?.description}
+              </Typography>
+              <Typography variant="h4" component="p">
+                {formData?.color}
+              </Typography>
+              <Typography variant="h4" component="p">
+                {formData?.hour}
+              </Typography>
+            </CardContent>
+            {/* <Button
+              variant="contained"
+              // color="primary"
+            >
+              Edit
+            </Button> */}
+            <CardActions>
+              <Fab
+                type="submit"
+                onClick={() => setEditOn(true)}
+                color="secondary"
+                aria-label="edit"
+              >
+                <EditIcon />
+              </Fab>
+            </CardActions>
+          </>
+        )}
+      </Card>
+    </>
   );
 };
 

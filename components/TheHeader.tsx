@@ -1,3 +1,4 @@
+import { AppBar } from '@mui/material';
 import { Navigation } from './Navigation';
 import { useLocale, useTranslations } from 'next-intl';
 
@@ -13,7 +14,9 @@ const TheHeader = () => {
 
   return (
     <header>
-      <Navigation navLinks={navItems} />
+      <AppBar position="static" sx={{ minHeight: 100 }}>
+        <Navigation navLinks={navItems} />
+      </AppBar>
     </header>
   );
 };
